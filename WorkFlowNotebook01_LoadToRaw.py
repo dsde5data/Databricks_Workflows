@@ -24,12 +24,12 @@ print('Workflow Notbook 01 - Load to Raw')
 
 # COMMAND ----------
 
-# MAGIC %fs ls '/Volumes/landing/ext/bronze/'
+
 
 # COMMAND ----------
 
 # DBTITLE 1,Create the schema on read source table is not already created
-df=spark.read.csv("dbfs:/Volumes/landing/ext/bronze/DimSalesTerritory.csv",header=True,inferSchema=True);
+df=spark.read.csv("/Volumes/landing_area/ubs/bronze/DimSalesTerritory.csv",header=True,inferSchema=True);
 df.write.mode('overwrite').format('delta').saveAsTable('DimSalesTerritory')
 
 # COMMAND ----------
